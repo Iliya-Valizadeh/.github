@@ -1,0 +1,58 @@
+name: Bug
+description: Something does not work the way the docs say it should.
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting this. Please do not post personal financial data, such as
+        account numbers, statements or credit reports. If you need data to show the
+        problem, make a small made-up example with the same shape.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened
+      description: What did you see? Paste the full error message if there is one.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected
+      description: What should have happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: The exact commands you ran, starting from a fresh clone if you can.
+      placeholder: |
+        1. git clone ...
+        2. make setup
+        3. make demo
+      render: text
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit or version
+      description: The output of `git rev-parse --short HEAD`, or the release tag.
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: Operating system and Python version.
+      placeholder: Ubuntu 24.04, Python 3.12
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: This issue has no personal financial data, secrets or API keys.
+          required: true

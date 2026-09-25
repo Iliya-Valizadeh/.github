@@ -1,0 +1,51 @@
+# Checks the Markdown in this repo with the same tools every other repo uses.
+# The tools live in ds-project-standard, so they are checked out from there
+# instead of being copied into this repo.
+name: CI
+
+on:
+  push:
+    branches: [main, "phase-*"]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    name: writing checks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Get the house-standard tools
+        uses: actions/checkout@v4
+        with:
+          repository: Iliya-Valizadeh/ds-project-standard
+          ref: main
+          path: _standard
+
+      - uses: astral-sh/setup-uv@v6
+        with:
+          python-version: "3.11"
+
+      - name: AI-writing signs
+        run: uv run --no-project python _standard/tools/ai_signs_check.py README.md CONTRIBUTING.md SECURITY.md .github/PULL_REQUEST_TEMPLATE.md
+
+      - name: Readability
+        run: uv run --no-project --with textstat python _standard/tools/readability_check.py README.md CONTRIBUTING.md SECURITY.md .github/PULL_REQUEST_TEMPLATE.md
+
+      - name: Local links
+        run: uv run --no-project python _standard/tools/links_check.py README.md CONTRIBUTING.md SECURITY.md .github/PULL_REQUEST_TEMPLATE.md
+
+  links:
+    name: link check (lychee)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Web link check (lychee)
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --no-progress './*.md' './.github/*.md'
+          fail: true
