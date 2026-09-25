@@ -1,0 +1,29 @@
+name: Question
+description: Ask how something works or why it was built this way.
+labels: ["question"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Questions are welcome, including questions about a method or a number in the
+        docs. Please check the README and the `docs/` folder first.
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Where it comes from
+      description: Link the file, section or line you are asking about, if there is one.
+    validations:
+      required: false
+  - type: checkboxes
+    id: privacy
+    attributes:
+      label: Privacy
+      options:
+        - label: This issue has no personal financial data, secrets or API keys.
+          required: true
