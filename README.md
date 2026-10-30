@@ -1,6 +1,6 @@
 # .github
 
-Default issue forms, pull request template and contributor guides for Iliya Valizadeh's public repos.
+Default issue forms, pull request template and contributor guides for my public repos.
 
 ## In plain words
 
