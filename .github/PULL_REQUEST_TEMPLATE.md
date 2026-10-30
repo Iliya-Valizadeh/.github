@@ -20,7 +20,7 @@ Code
 
 Docs
 
-- [ ] `make check-docs` passes. It runs the claims, readability, AI-writing signs, link
+- [ ] `make check-docs` passes. It runs the claims, readability, writing style, link
       and README section checks.
 - [ ] Every new or changed number is in `CLAIMS.md`, with the file it comes from.
 - [ ] A new evaluation has its plan in `docs/eval_plan.md`, committed before the results.

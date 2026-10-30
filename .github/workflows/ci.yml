@@ -29,7 +29,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - name: AI-writing signs
+      - name: Writing style
         run: uv run --no-project python _standard/tools/ai_signs_check.py README.md CONTRIBUTING.md SECURITY.md .github/PULL_REQUEST_TEMPLATE.md
 
       - name: Readability
